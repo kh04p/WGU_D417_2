@@ -1,0 +1,409 @@
+
+PLAY [Create local user accounts for Linux and Windows hosts.] *****************
+
+TASK [Create user account on EXOS switches.] ***********************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [test_box_2]
+changed: [user_network]
+changed: [it_network]
+changed: [acct_network]
+changed: [mgmt_network]
+
+TASK [Get all user accounts on EXOS switches.] *********************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [test_box_2]
+ok: [acct_network]
+ok: [user_network]
+ok: [it_network]
+ok: [mgmt_network]
+
+TASK [Display switch user accounts.] *******************************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [test_box_2]
+ok: [user_network] => {
+    "switch_output.stdout": [
+        "User Name  Access LoginOK  Failed  Consec. Fail  State\n--------------------------------  ------ -------  ------  ------------  --------\n                           admin     R/W       2       0             0   Enabled\n                            user     RO        0       0             0   Enabled\n                         swadmin     R/W       0       0             0   Enabled\n                        ssh_user     R/W      10       0             0   Enabled\n                     Local-Admin     R/W       0       0             0   Enabled"
+    ]
+}
+ok: [mgmt_network] => {
+    "switch_output.stdout": [
+        "User Name  Access LoginOK  Failed  Consec. Fail  State\n--------------------------------  ------ -------  ------  ------------  --------\n                           admin     R/W       1       0             0   Enabled\n                            user     RO        0       0             0   Enabled\n                         swadmin     R/W       0       0             0   Enabled\n                        ssh_user     R/W       5       0             0   Enabled\n                     Local-Admin     R/W       0       0             0   Enabled"
+    ]
+}
+ok: [acct_network] => {
+    "switch_output.stdout": [
+        "User Name  Access LoginOK  Failed  Consec. Fail  State\n--------------------------------  ------ -------  ------  ------------  --------\n                           admin     R/W       1       0             0   Enabled\n                            user     RO        0       0             0   Enabled\n                         swadmin     R/W       0       0             0   Enabled\n                        ssh_user     R/W       5       0             0   Enabled\n                     Local-Admin     R/W       0       0             0   Enabled"
+    ]
+}
+ok: [it_network] => {
+    "switch_output.stdout": [
+        "User Name  Access LoginOK  Failed  Consec. Fail  State\n--------------------------------  ------ -------  ------  ------------  --------\n                           admin     R/W       1       0             0   Enabled\n                            user     RO        0       0             0   Enabled\n                         swadmin     R/W       0       0             0   Enabled\n                        ssh_user     R/W       5       0             0   Enabled\n                     Local-Admin     R/W       0       0             0   Enabled"
+    ]
+}
+
+TASK [Create Linux user account for Test_Box_1.] *******************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [mgmt_network]
+skipping: [acct_network]
+skipping: [it_network]
+ok: [test_box_1]
+
+TASK [Get users of Test_Box_1.] ************************************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+changed: [test_box_1]
+
+TASK [List users of Test_Box_1.] ***********************************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+ok: [test_box_1] => {
+    "test_box_1_users.stdout_lines": [
+        "root:x:0:0:root:/root:/bin/bash",
+        "daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin",
+        "bin:x:2:2:bin:/bin:/usr/sbin/nologin",
+        "sys:x:3:3:sys:/dev:/usr/sbin/nologin",
+        "sync:x:4:65534:sync:/bin:/bin/sync",
+        "games:x:5:60:games:/usr/games:/usr/sbin/nologin",
+        "man:x:6:12:man:/var/cache/man:/usr/sbin/nologin",
+        "lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin",
+        "mail:x:8:8:mail:/var/mail:/usr/sbin/nologin",
+        "news:x:9:9:news:/var/spool/news:/usr/sbin/nologin",
+        "uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin",
+        "proxy:x:13:13:proxy:/bin:/usr/sbin/nologin",
+        "www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin",
+        "backup:x:34:34:backup:/var/backups:/usr/sbin/nologin",
+        "list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin",
+        "irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin",
+        "gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin",
+        "nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin",
+        "systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin",
+        "systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin",
+        "systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin",
+        "messagebus:x:103:106::/nonexistent:/usr/sbin/nologin",
+        "syslog:x:104:110::/home/syslog:/usr/sbin/nologin",
+        "_apt:x:105:65534::/nonexistent:/usr/sbin/nologin",
+        "tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false",
+        "uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin",
+        "tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin",
+        "landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin",
+        "pollinate:x:110:1::/var/cache/pollinate:/bin/false",
+        "usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin",
+        "sshd:x:112:65534::/run/sshd:/usr/sbin/nologin",
+        "systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin",
+        "student:x:1000:1000:student:/home/student:/bin/bash",
+        "lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false",
+        "TestUser1:x:1001:1001::/home/TestUser1:/bin/bash",
+        "TestUser1 : TestUser1 sudo"
+    ]
+}
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+
+TASK [Create Linux user account for Test_Box_2.] *******************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [acct_network]
+skipping: [user_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+ok: [test_box_2]
+
+TASK [Get users of Test_Box_2.] ************************************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+changed: [test_box_2]
+
+TASK [List users of Test_Box_2.] ***********************************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+ok: [test_box_2] => {
+    "test_box_2_users.stdout_lines": [
+        "root:x:0:0:root:/root:/bin/bash",
+        "daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin",
+        "bin:x:2:2:bin:/bin:/usr/sbin/nologin",
+        "sys:x:3:3:sys:/dev:/usr/sbin/nologin",
+        "sync:x:4:65534:sync:/bin:/bin/sync",
+        "games:x:5:60:games:/usr/games:/usr/sbin/nologin",
+        "man:x:6:12:man:/var/cache/man:/usr/sbin/nologin",
+        "lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin",
+        "mail:x:8:8:mail:/var/mail:/usr/sbin/nologin",
+        "news:x:9:9:news:/var/spool/news:/usr/sbin/nologin",
+        "uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin",
+        "proxy:x:13:13:proxy:/bin:/usr/sbin/nologin",
+        "www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin",
+        "backup:x:34:34:backup:/var/backups:/usr/sbin/nologin",
+        "list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin",
+        "irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin",
+        "gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin",
+        "nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin",
+        "systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin",
+        "systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin",
+        "systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin",
+        "messagebus:x:103:106::/nonexistent:/usr/sbin/nologin",
+        "syslog:x:104:110::/home/syslog:/usr/sbin/nologin",
+        "_apt:x:105:65534::/nonexistent:/usr/sbin/nologin",
+        "tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false",
+        "uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin",
+        "tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin",
+        "landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin",
+        "pollinate:x:110:1::/var/cache/pollinate:/bin/false",
+        "usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin",
+        "sshd:x:112:65534::/run/sshd:/usr/sbin/nologin",
+        "systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin",
+        "student:x:1000:1000:student:/home/student:/bin/bash",
+        "lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false",
+        "TestUser2:x:1001:1001::/home/TestUser2:/bin/bash",
+        "TestUser2 : TestUser2 sudo"
+    ]
+}
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+
+TASK [Create Windows user account for WindowsDesktop-1] ************************
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [user_network]
+skipping: [test_box_2]
+skipping: [acct_network]
+skipping: [it_network]
+skipping: [mgmt_network]
+ok: [windowsdesktop-1]
+
+TASK [Get list of all Admin  users from WindowsDesktop-1] **********************
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+changed: [windowsdesktop-1]
+
+TASK [List all Admin users from WindowsDesktop-1] ******************************
+ok: [windowsdesktop-1] => {
+    "windowsdesktop1_users.stdout_lines": [
+        "",
+        "ObjectClass Name                          PrincipalSource",
+        "----------- ----                          ---------------",
+        "User        DESKTOP-1OLOPAS\\Administrator Local          ",
+        "User        DESKTOP-1OLOPAS\\DesktopUser1  Local          ",
+        "User        DESKTOP-1OLOPAS\\instructor    Local          ",
+        "User        DESKTOP-1OLOPAS\\Student       Local          ",
+        "",
+        ""
+    ]
+}
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+
+TASK [Create Windows user account for WindowsDesktop-2] ************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-3]
+skipping: [test_box_1]
+skipping: [windowsdesktop-4]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [test_box_2]
+skipping: [mgmt_network]
+skipping: [it_network]
+ok: [windowsdesktop-2]
+
+TASK [Get list of all Admin  users from WindowsDesktop-2] **********************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+changed: [windowsdesktop-2]
+
+TASK [List all Admin users from WindowsDesktop-2] ******************************
+skipping: [windowsdesktop-1]
+ok: [windowsdesktop-2] => {
+    "windowsdesktop2_users.stdout_lines": [
+        "",
+        "ObjectClass Name                          PrincipalSource",
+        "----------- ----                          ---------------",
+        "User        DESKTOP-1OLOPAS\\Administrator Local          ",
+        "User        DESKTOP-1OLOPAS\\DesktopUser2  Local          ",
+        "User        DESKTOP-1OLOPAS\\instructor    Local          ",
+        "User        DESKTOP-1OLOPAS\\Student       Local          ",
+        "",
+        ""
+    ]
+}
+skipping: [windowsdesktop-3]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+
+TASK [Create Windows user account for WindowsDesktop-3] ************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+ok: [windowsdesktop-3]
+
+TASK [Get list of all Admin  users from WindowsDesktop-3] **********************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+changed: [windowsdesktop-3]
+
+TASK [List all Admin users from WindowsDesktop-3] ******************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+ok: [windowsdesktop-3] => {
+    "windowsdesktop3_users.stdout_lines": [
+        "",
+        "ObjectClass Name                          PrincipalSource",
+        "----------- ----                          ---------------",
+        "User        DESKTOP-1OLOPAS\\Administrator Local          ",
+        "User        DESKTOP-1OLOPAS\\DesktopUser3  Local          ",
+        "User        DESKTOP-1OLOPAS\\instructor    Local          ",
+        "User        DESKTOP-1OLOPAS\\Student       Local          ",
+        "",
+        ""
+    ]
+}
+skipping: [windowsdesktop-4]
+skipping: [test_box_1]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [it_network]
+skipping: [mgmt_network]
+
+TASK [Create Windows user account for WindowsDesktop-4] ************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [test_box_1]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+ok: [windowsdesktop-4]
+
+TASK [Get list of all Admin  users from WindowsDesktop-4] **********************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+skipping: [test_box_1]
+skipping: [test_box_2]
+skipping: [user_network]
+skipping: [acct_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+changed: [windowsdesktop-4]
+
+TASK [List all Admin users from WindowsDesktop-4] ******************************
+skipping: [windowsdesktop-1]
+skipping: [windowsdesktop-2]
+skipping: [windowsdesktop-3]
+ok: [windowsdesktop-4] => {
+    "windowsdesktop4_users.stdout_lines": [
+        "",
+        "ObjectClass Name                          PrincipalSource",
+        "----------- ----                          ---------------",
+        "User        DESKTOP-1OLOPAS\\Administrator Local          ",
+        "User        DESKTOP-1OLOPAS\\DesktopUser4  Local          ",
+        "User        DESKTOP-1OLOPAS\\instructor    Local          ",
+        "User        DESKTOP-1OLOPAS\\Student       Local          ",
+        "",
+        ""
+    ]
+}
+skipping: [test_box_2]
+skipping: [test_box_1]
+skipping: [acct_network]
+skipping: [user_network]
+skipping: [mgmt_network]
+skipping: [it_network]
+
+PLAY RECAP *********************************************************************
+acct_network               : ok=3    changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+it_network                 : ok=3    changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+mgmt_network               : ok=3    changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+test_box_1                 : ok=3    changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+test_box_2                 : ok=3    changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+user_network               : ok=3    changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+windowsdesktop-1           : ok=3    changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+windowsdesktop-2           : ok=3    changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+windowsdesktop-3           : ok=3    changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+windowsdesktop-4           : ok=3    changed=1    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+
